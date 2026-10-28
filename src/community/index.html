@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <link rel="icon" href="../assets/icons/intelex-logo.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Khám phá hướng học qua thực hành, tài nguyên công nghệ, thử thách học thuật và cơ hội kết nối cùng Intelex.">
+    <title>Cộng đồng & Học tập — Intelex</title>
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+  </head>
+  <body data-page="community">
+    <header class="site-header" data-site-header>
+      <a class="brand" href="../index.html" aria-label="INTELEX home"><img class="brand__mark" src="../assets/icons/intelex-logo.png" alt="INTELEX"></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Mở menu</span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Điều hướng chính">
+        <a href="../index.html" data-nav-link>Khám phá</a>
+        <a href="../labs/index.html" data-nav-link>Labs</a>
+        <a href="../projects/index.html" data-nav-link>Dự án</a>
+        <a href="./index.html" data-nav-link>Cộng đồng</a>
+        <a href="../about/index.html" data-nav-link>Về Intelex</a>
+      </nav>
+      <a class="header-cta" href="../labs/index.html">Khám phá Labs</a>
+    </header>
+
+    <main>
+      <section class="community-hero">
+        <div class="community-hero__content">
+          <p class="eyebrow">Learn · Share · Build</p>
+          <h1>Cộng đồng học qua thực hành</h1>
+          <p>Một nơi để cùng khám phá công nghệ qua công cụ, tài nguyên thực hành và những ý tưởng có khả năng tạo ra giá trị ứng dụng.</p>
+          <div class="button-row">
+            <a class="button button--primary" href="../labs/index.html">Khám phá Labs</a>
+            <a class="button button--secondary" href="#connect">Kết nối với Intelex</a>
+          </div>
+        </div>
+        <div class="community-hero__visual">
+          <img src="../assets/images/community-learning-hero.png" alt="Không gian học tập công nghệ với Labs, mentor và đối tác">
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section__header">
+          <p class="eyebrow">Audience Paths</p>
+          <h2>Chọn lối vào theo đối tượng</h2>
+          <p>Mỗi lối vào dẫn đến Labs hoặc tài nguyên liên quan, không tạo trang phân khúc rỗng.</p>
+        </div>
+        <img class="community-wide-image" src="../assets/images/community-audience-paths.png" alt="Bốn lối vào học tập cho sinh viên, giảng viên, người đi làm và mentor">
+        <div class="feature-grid feature-grid--four audience-grid" data-audience-filters>
+          <article class="feature-card audience-card is-active" data-audience="all">
+            <span>Tất cả</span>
+            <h3>Tất cả tài nguyên</h3>
+            <p>Xem toàn bộ lối vào Labs, tài nguyên và chương trình đang được biên soạn.</p>
+            <a href="../labs/index.html">Đi đến Labs</a>
+          </article>
+          <article class="feature-card audience-card" data-audience="student">
+            <span>SV</span>
+            <h3>Sinh viên</h3>
+            <p>Học lý thuyết qua ví dụ trực quan, giải bài lab và lưu sản phẩm học tập.</p>
+            <a href="../labs/index.html?category=education">Labs cho học tập</a>
+          </article>
+          <article class="feature-card audience-card" data-audience="lecturer">
+            <span>GV</span>
+            <h3>Giảng viên</h3>
+            <p>Tìm công cụ làm mẫu, bài thực hành, bài tập tương tác và tài liệu lớp học.</p>
+            <a href="../labs/index.html?category=education">Labs cho giảng dạy</a>
+          </article>
+          <article class="feature-card audience-card" data-audience="professional">
+            <span>Work</span>
+            <h3>Người đi làm</h3>
+            <p>Công cụ dữ liệu, sơ đồ quy trình và kỹ năng số có thể ứng dụng vào công việc.</p>
+            <a href="../labs/index.html?category=data-bi">Labs dữ liệu</a>
+          </article>
+          <article class="feature-card audience-card" data-audience="mentor">
+            <span>Mentor</span>
+            <h3>Mentor/Đối tác</h3>
+            <p>Góp ý nội dung, đề xuất workshop hoặc mang bài toán thực tế vào môi trường học.</p>
+            <a href="../about/index.html#contact">Đề xuất hợp tác</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--muted">
+        <div class="community-split">
+          <div>
+            <p class="eyebrow">Resources</p>
+            <h2>Học từ công cụ thật</h2>
+            <p>Các tài nguyên chỉ mở tải khi có file thật, checksum/version và quyền phân phối rõ ràng.</p>
+          </div>
+          <img src="../assets/images/community-resources.png" alt="Thư viện tài nguyên thực hành gồm hướng dẫn, dataset, mạch và thuật toán">
+        </div>
+        <div class="resource-list" data-resource-list aria-live="polite"></div>
+        <div class="empty-state" hidden data-resource-empty>
+          <p>Chưa có tài nguyên phù hợp với lối vào này.</p>
+          <button class="button button--secondary button--small" type="button" data-resource-clear>Xem tất cả</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="community-split community-split--reverse">
+          <img src="../assets/images/community-programs.png" alt="Minh họa thử thách học thuật, internship và innovation showcase">
+          <div>
+            <p class="eyebrow">Programs</p>
+            <h2>Thử thách và chương trình</h2>
+            <p>IN-07, IN-08 và IN-10 được trình bày như sáng kiến cộng đồng. Lịch hoạt động, đăng ký và điều kiện tham gia cần được xác minh trước khi mở công khai.</p>
+          </div>
+        </div>
+        <div class="program-list" data-program-list></div>
+      </section>
+
+      <section class="section section--featured-lab" id="connect">
+        <div class="research-cta">
+          <div>
+            <p class="eyebrow">Connect</p>
+            <h2>Chia sẻ ý tưởng cùng Intelex</h2>
+            <p>Nếu bạn muốn đề xuất bài thực hành, đóng góp tài liệu, giới thiệu bài toán thực tế hoặc tìm hiểu hợp tác học thuật, hãy gửi email cho Intelex.</p>
+          </div>
+          <a class="button button--primary" href="../about/index.html#contact">Kết nối với Intelex</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img class="site-footer__logo" src="../assets/icons/intelex-logo.png" alt="Intelex — Intelligent &amp; Excellent Finance">
+      <p>Không hiển thị tải xuống, đăng ký hoặc lịch hoạt động khi chưa có nguồn xác minh.</p>
+      <a href="../about/index.html#contact">Kết nối</a>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/community-data.js"></script>
+    <script src="../assets/js/community-directory.js"></script>
+  </body>
+</html>

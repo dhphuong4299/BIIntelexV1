@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <link rel="icon" href="./assets/icons/intelex-logo.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thực hành dữ liệu, thuật toán, điện tử, IoT và công cụ sáng tạo ngay trên trình duyệt. Khám phá các Intelex Labs và hướng nghiên cứu ứng dụng.">
+    <title>Intelex - Khám phá công nghệ qua trải nghiệm</title>
+    <link rel="stylesheet" href="./assets/css/tokens.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/pages.css">
+  </head>
+  <body data-page="home">
+    <header class="site-header" data-site-header>
+        <a class="brand" href="./index.html" aria-label="INTELEX home">
+        <img class="brand__mark" src="./assets/icons/intelex-logo.png" alt="INTELEX">
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Mở menu</span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Điều hướng chính">
+        <a href="./index.html" data-nav-link>Khám phá</a>
+        <a href="./labs/index.html" data-nav-link>Labs</a>
+        <a href="./projects/index.html" data-nav-link>Dự án</a>
+        <a href="./community/index.html" data-nav-link>Cộng đồng</a>
+        <a href="./about/index.html" data-nav-link>Về Intelex</a>
+      </nav>
+      <a class="header-cta" href="./labs/index.html">Khám phá Labs</a>
+    </header>
+
+    <main>
+      <section class="hero hero--home">
+        <div class="hero__content">
+          <p class="eyebrow">TECHNOLOGY · LEARN BY DOING</p>
+          <h1>Công nghệ không chỉ để đọc. Hãy thử.</h1>
+          <p class="hero__lead">Khám phá công cụ, mô phỏng và bài thực hành ngay trên trình duyệt. Làm thử, điều chỉnh, quan sát kết quả và lưu công việc của bạn.</p>
+          <div class="button-row">
+            <a class="button button--primary" href="./labs/index.html">Khám phá Labs</a>
+            <a class="button button--secondary" href="./projects/index.html">Xem dự án</a>
+          </div>
+          <p class="hero__microcopy">Không cần tài khoản để bắt đầu.</p>
+        </div>
+        <div class="hero__visual hero-lab-preview" aria-label="Bản preview Data Explorer Lab">
+          <img src="./assets/images/home-rd-innovation-hub.png" alt="Không gian R&D và Innovation Hub với thiết bị lab, dữ liệu, IoT và tự động hóa">
+          <div class="demo-panel" data-home-demo>
+            <div class="demo-panel__header">
+              <div>
+                <p class="card-kicker">Preview trung thực</p>
+                <h2>Data Explorer</h2>
+              </div>
+              <span class="status-pill status-pill--preview">Đang phát triển</span>
+            </div>
+            <div class="segmented-control" aria-label="Chọn dữ liệu mẫu">
+              <button class="is-active" type="button" data-demo-dataset="growth">Tăng trưởng</button>
+              <button type="button" data-demo-dataset="cost">Chi phí</button>
+            </div>
+            <div class="segmented-control" aria-label="Chọn kiểu biểu đồ">
+              <button class="is-active" type="button" data-demo-chart="bar">Cột</button>
+              <button type="button" data-demo-chart="line">Đường</button>
+            </div>
+            <div class="mini-chart" data-demo-chart-view aria-label="Biểu đồ dữ liệu mẫu" role="img"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section__header">
+          <p class="eyebrow">Start Here</p>
+          <h2>Bắt đầu từ điều bạn muốn làm</h2>
+          <p>Chọn lối vào theo mục tiêu sử dụng, rồi đi sâu vào Lab phù hợp.</p>
+        </div>
+        <div class="feature-grid feature-grid--four">
+          <article class="feature-card intent-card">
+            <img class="card-image" src="./assets/images/home-data-charts.png" alt="Dashboard dữ liệu với bảng, biểu đồ cột, đường và tròn">
+            <span aria-hidden="true">01</span>
+            <h3>Dữ liệu & biểu đồ</h3>
+            <p>Làm sạch, tổng hợp và trực quan hóa dữ liệu.</p>
+            <a href="./labs/index.html?category=data">Khám phá</a>
+          </article>
+          <article class="feature-card intent-card">
+            <img class="card-image" src="./assets/images/home-code-algorithms.png" alt="Màn hình mô phỏng thuật toán với cây, đồ thị và các bước sắp xếp">
+            <span aria-hidden="true">02</span>
+            <h3>Code & thuật toán</h3>
+            <p>Hiểu thuật toán qua từng bước mô phỏng.</p>
+            <a href="./labs/index.html?category=computer-science">Khám phá</a>
+          </article>
+          <article class="feature-card intent-card">
+            <img class="card-image" src="./assets/images/home-circuit-iot.png" alt="Bàn thực hành mạch điện với cảm biến IoT và tín hiệu đo">
+            <span aria-hidden="true">03</span>
+            <h3>Mạch điện & IoT</h3>
+            <p>Kiểm tra logic, cảm biến và tín hiệu.</p>
+            <a href="./labs/index.html?category=electronics-iot">Khám phá</a>
+          </article>
+          <article class="feature-card intent-card">
+            <img class="card-image" src="./assets/images/home-learning-teaching.png" alt="Giảng viên và học viên cùng làm bài thực hành công nghệ">
+            <span aria-hidden="true">04</span>
+            <h3>Học tập & giảng dạy</h3>
+            <p>Tạo câu hỏi, bài thực hành và học liệu.</p>
+            <a href="./labs/index.html?category=education">Khám phá</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--featured-lab">
+        <div class="featured-lab">
+          <img class="featured-lab__image" src="./assets/images/home-intelex-labs.png" alt="Không gian Intelex Labs với giao diện tạo biểu đồ và dữ liệu mẫu">
+          <div>
+            <p class="eyebrow">Featured Lab</p>
+            <h2>Khám phá tại Intelex Labs</h2>
+            <p>Đi từ dữ liệu thô tới biểu đồ trực quan. Nhập dữ liệu mẫu, chỉnh cách tổng hợp và xuất kết quả ngay trên máy của bạn.</p>
+            <div class="lab-card__meta">
+              <span class="status-pill status-pill--preview">Đang phát triển</span>
+              <span class="status-pill">Không gắn Offline ready</span>
+            </div>
+          </div>
+          <div class="featured-lab__actions">
+            <a class="button button--secondary" href="./labs/index.html?category=data">Tìm hiểu Lab</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section__header">
+          <p class="eyebrow">Technology</p>
+          <h2>Bốn lĩnh vực Intelex khám phá</h2>
+          <p>Đây là lối vào tóm tắt. Phần giải thích chi tiết thuộc Projects.</p>
+        </div>
+        <div class="feature-grid feature-grid--four">
+          <article class="feature-card tech-card">
+            <img class="card-image" src="./assets/images/home-ai.png" alt="Mô hình mạng học máy và các bảng đánh giá AI">
+            <h3>AI</h3>
+            <p>Mô hình, trợ lý số, thuật toán học máy.</p>
+          </article>
+          <article class="feature-card tech-card">
+            <img class="card-image" src="./assets/images/home-data-bi.png" alt="Dashboard BI với luồng dữ liệu và biểu đồ phân tích">
+            <h3>Data & BI</h3>
+            <p>Xử lý dữ liệu và trực quan hóa.</p>
+          </article>
+          <article class="feature-card tech-card">
+            <img class="card-image" src="./assets/images/home-iot-smart-systems.png" alt="Hệ thống IoT thủy canh với cảm biến và digital twin">
+            <h3>IoT & Smart Systems</h3>
+            <p>Cảm biến, hệ thống mô phỏng, Digital Twin.</p>
+          </article>
+          <article class="feature-card tech-card">
+            <img class="card-image" src="./assets/images/home-automation.png" alt="Màn hình thiết kế quy trình tự động hóa cạnh cánh tay robot">
+            <h3>Automation</h3>
+            <p>Thiết kế quy trình và tự động hóa tác vụ.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--muted">
+        <div class="research-cta">
+          <div>
+            <p class="eyebrow">R&D + Community</p>
+            <h2>Từ bài toán thực tế đến phòng thí nghiệm</h2>
+            <p>Intelex kết nối công nghệ, nghiên cứu và học qua trải nghiệm trong hệ sinh thái THL ONE. Khám phá các sáng kiến R&D và những hoạt động học thuật phù hợp.</p>
+          </div>
+          <div class="button-row">
+            <a class="button button--primary" href="./projects/index.html">Dự án R&D</a>
+            <a class="button button--secondary" href="./community/index.html">Cộng đồng</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img class="site-footer__logo" src="./assets/icons/intelex-logo.png" alt="Intelex — Intelligent &amp; Excellent Finance">
+      <p>Intelex · R&D & Innovation Hub · TP. Hồ Chí Minh, Việt Nam · intelex.support@gmail.com</p>
+      <a href="./about/index.html#contact">Liên hệ</a>
+    </footer>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/home-demo.js"></script>
+  </body>
+</html>

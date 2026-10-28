@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <link rel="icon" href="../assets/icons/intelex-logo.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Khám phá hướng R&D của Intelex về AI, Data & BI, IoT và Automation, các sáng kiến công nghệ và Lab liên quan.">
+    <title>Dự án & Công nghệ — Intelex R&D</title>
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+  </head>
+  <body data-page="projects">
+    <header class="site-header" data-site-header>
+      <a class="brand" href="../index.html" aria-label="INTELEX home"><img class="brand__mark" src="../assets/icons/intelex-logo.png" alt="INTELEX"></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Mở menu</span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Điều hướng chính">
+        <a href="../index.html" data-nav-link>Khám phá</a>
+        <a href="../labs/index.html" data-nav-link>Labs</a>
+        <a href="./index.html" data-nav-link>Dự án</a>
+        <a href="../community/index.html" data-nav-link>Cộng đồng</a>
+        <a href="../about/index.html" data-nav-link>Về Intelex</a>
+      </nav>
+      <a class="header-cta" href="../labs/index.html">Khám phá Labs</a>
+    </header>
+
+    <main>
+      <section class="projects-hero">
+        <div class="projects-hero__content">
+          <p class="eyebrow">R&D × Technology</p>
+          <h1>Từ ý tưởng đến thử nghiệm thực tế</h1>
+          <p>Khám phá những lĩnh vực công nghệ mà Intelex nghiên cứu, các sáng kiến R&D và cách chúng kết nối với môi trường thực hành.</p>
+          <div class="button-row">
+            <a class="button button--primary" href="#rd-catalog">Xem danh mục R&D</a>
+            <a class="button button--secondary" href="../labs/index.html">Khám phá Labs</a>
+          </div>
+        </div>
+        <div class="projects-hero__visual">
+          <img src="../assets/images/projects-rd-hero.png" alt="Không gian R&D minh họa hành trình từ ý tưởng đến prototype và Lab">
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section__header">
+          <p class="eyebrow">Technology Focus</p>
+          <h2>Bốn trụ cột công nghệ</h2>
+          <p>Các mô tả dưới đây là định hướng nghiên cứu và năng lực thực hành, không mặc định là sản phẩm thương mại đã ra mắt.</p>
+        </div>
+        <div class="pillar-showcase">
+          <img src="../assets/images/projects-technology-pillars.png" alt="Bốn trụ cột AI, Data, IoT và Automation dưới dạng dashboard công nghệ">
+          <div class="feature-grid feature-grid--four project-pillars">
+            <article class="feature-card project-pillar">
+              <span>AI</span>
+              <h3>AI & Digital Worker</h3>
+              <p>AI Agent, mô hình hỗ trợ tự động hóa nghiệp vụ và khám phá khả năng của học máy.</p>
+              <a href="../labs/index.html?category=ai-ml">Liên hệ Lab: AI & ML Playground</a>
+            </article>
+            <article class="feature-card project-pillar">
+              <span>BI</span>
+              <h3>Data & Business Intelligence</h3>
+              <p>Xử lý, tổng hợp và trực quan hóa dữ liệu hỗ trợ hiểu vấn đề.</p>
+              <a href="../labs/index.html?category=data-bi">Liên hệ Lab: Data Explorer / Chart Studio</a>
+            </article>
+            <article class="feature-card project-pillar">
+              <span>IoT</span>
+              <h3>IoT & Smart Systems</h3>
+              <p>Tín hiệu cảm biến, hệ thống nhúng, Digital Twin và ứng dụng mô phỏng.</p>
+              <a href="../labs/index.html?category=electronics-iot">Liên hệ Lab: Circuit / IoT / Smart Farm</a>
+            </article>
+            <article class="feature-card project-pillar">
+              <span>Ops</span>
+              <h3>Automation & SaaS</h3>
+              <p>Thiết kế quy trình, tái sử dụng nền tảng và kiến trúc hệ thống.</p>
+              <a href="../labs/index.html?category=programming">Liên hệ Lab: Workflow / Git / DevOps</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--muted" id="rd-catalog">
+        <div class="project-directory__heading">
+          <div>
+            <p class="eyebrow">R&D Catalogue</p>
+            <h2>Danh mục sáng kiến R&D</h2>
+          </div>
+          <p class="project-result-count" data-project-result-count aria-live="polite"></p>
+        </div>
+        <div class="filter-row project-filter-row" aria-label="Bộ lọc dự án" data-project-filters>
+          <button class="chip is-active" type="button" data-domain="all">Tất cả</button>
+          <button class="chip" type="button" data-domain="ai">AI</button>
+          <button class="chip" type="button" data-domain="data">Data</button>
+          <button class="chip" type="button" data-domain="iot">IoT</button>
+          <button class="chip" type="button" data-domain="automation">Automation</button>
+        </div>
+        <div class="project-directory" data-project-directory aria-live="polite"></div>
+        <div class="empty-state" hidden data-project-empty>
+          <p>Chưa có sáng kiến phù hợp với bộ lọc này.</p>
+          <button class="button button--secondary button--small" type="button" data-project-clear>Xóa bộ lọc</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="research-flow">
+          <div>
+            <p class="eyebrow">Research Path</p>
+            <h2>Bài toán → Nghiên cứu → Prototype → Lab</h2>
+          </div>
+          <p>Mỗi Lab là môi trường có thể thử nghiệm một phần nguyên lý công nghệ; sự tồn tại của Lab không chứng minh sản phẩm thương mại tương ứng đã hoàn thành.</p>
+        </div>
+      </section>
+
+      <section class="section section--featured-lab">
+        <div class="research-cta">
+          <div>
+            <p class="eyebrow">Collaboration</p>
+            <h2>Có bài toán công nghệ muốn trao đổi?</h2>
+            <p>Kết nối cùng Intelex để thảo luận hướng nghiên cứu, thử nghiệm POC và khả năng hợp tác phù hợp.</p>
+          </div>
+          <a class="button button--primary" href="../about/index.html#contact">Liên hệ Intelex</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img class="site-footer__logo" src="../assets/icons/intelex-logo.png" alt="Intelex — Intelligent &amp; Excellent Finance">
+      <p>Không trình bày roadmap, ý tưởng hoặc Lab thử nghiệm như sản phẩm đã phát hành.</p>
+      <a href="../about/index.html#contact">Liên hệ</a>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/projects-data.js"></script>
+    <script src="../assets/js/project-directory.js"></script>
+  </body>
+</html>

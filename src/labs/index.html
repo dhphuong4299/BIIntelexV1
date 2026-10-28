@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <link rel="icon" href="../assets/icons/intelex-logo.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thư viện công cụ thực hành dữ liệu, lập trình, điện tử, IoT, AI và mô phỏng khoa học. Thử nghiệm ngay trên trình duyệt với hỗ trợ offline tùy Lab.">
+    <title>Intelex Labs — Thực hành công nghệ trên trình duyệt</title>
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+  </head>
+  <body data-page="labs">
+    <header class="site-header" data-site-header>
+      <a class="brand" href="../index.html" aria-label="INTELEX home"><img class="brand__mark" src="../assets/icons/intelex-logo.png" alt="INTELEX"></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Mở menu</span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Điều hướng chính">
+        <a href="../index.html" data-nav-link>Khám phá</a>
+        <a href="./index.html" data-nav-link>Labs</a>
+        <a href="../projects/index.html" data-nav-link>Dự án</a>
+        <a href="../community/index.html" data-nav-link>Cộng đồng</a>
+        <a href="../about/index.html" data-nav-link>Về Intelex</a>
+      </nav>
+      <a class="header-cta" href="./index.html">Khám phá Labs</a>
+    </header>
+
+    <main>
+      <section class="labs-hero">
+        <div class="labs-hero__content">
+          <p class="eyebrow">Browser Labs · Learn by doing</p>
+          <h1>Intelex Labs</h1>
+          <p>Từ dữ liệu, lập trình đến mô phỏng khoa học. Chọn một công cụ và bắt đầu trải nghiệm.</p>
+          <form class="lab-search" role="search" data-lab-search>
+            <label class="sr-only" for="lab-query">Tìm Lab</label>
+            <input id="lab-query" name="query" type="search" placeholder="Tìm Lab, công cụ, chủ đề..." autocomplete="off" data-lab-query>
+          </form>
+        </div>
+        <div class="labs-hero__visual" aria-hidden="true">
+          <img src="../assets/images/labs-hub-hero.png" alt="">
+        </div>
+      </section>
+
+      <section class="section section--tight lab-directory">
+        <div class="section__header">
+          <p class="eyebrow">Lĩnh vực</p>
+          <h2>Khám phá theo lĩnh vực</h2>
+        </div>
+        <div class="filter-row" aria-label="Bộ lọc Labs" data-lab-filters>
+          <button class="chip is-active" type="button" data-category="all">Tất cả</button>
+          <button class="chip" type="button" data-category="data-bi">Dữ liệu & BI</button>
+          <button class="chip" type="button" data-category="education">Giáo dục</button>
+          <button class="chip" type="button" data-category="programming">Lập trình</button>
+          <button class="chip" type="button" data-category="electronics-iot">Điện tử & IoT</button>
+          <button class="chip" type="button" data-category="ai-ml">AI & ML</button>
+          <button class="chip" type="button" data-category="3d-cad">3D & CAD</button>
+          <button class="chip" type="button" data-category="science-engineering">Khoa học & Kỹ thuật</button>
+        </div>
+      </section>
+
+      <section class="section section--tight">
+        <div class="lab-directory__heading">
+          <div>
+            <p class="eyebrow">Danh mục Labs</p>
+            <h2>Chọn một trải nghiệm</h2>
+          </div>
+          <p class="lab-result-count" data-lab-result-count aria-live="polite"></p>
+        </div>
+        <div class="lab-grid" data-lab-grid aria-live="polite"></div>
+        <div class="empty-state" hidden data-lab-empty>
+          <p>Chưa tìm thấy Lab phù hợp. Hãy thử tên hoặc lĩnh vực khác.</p>
+          <button class="button button--secondary button--small" type="button" data-lab-clear>Xóa bộ lọc</button>
+        </div>
+      </section>
+
+      <section class="section section--muted">
+        <div class="labs-guide">
+          <div>
+            <p class="eyebrow">Cách bắt đầu</p>
+            <h2>Không cần cài đặt phức tạp</h2>
+          </div>
+          <p>Chọn Lab, mở ví dụ mẫu và thao tác trực tiếp trên máy của bạn. Một số Lab có thể tải tài nguyên để tiếp tục sử dụng khi không có mạng, nhưng chỉ hiển thị offline ready khi đã kiểm chứng cache đầy đủ.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img class="site-footer__logo" src="../assets/icons/intelex-logo.png" alt="Intelex — Intelligent &amp; Excellent Finance">
+      <p>Labs chỉ hiển thị hành động chạy/offline khi đã được triển khai và kiểm thử.</p>
+      <a href="../about/index.html#contact">Đề xuất hợp tác</a>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/labs-data.js"></script>
+    <script src="../assets/js/lab-directory.js"></script>
+  </body>
+</html>

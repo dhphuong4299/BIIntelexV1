@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <link rel="icon" href="../assets/icons/intelex-logo.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Không gian thử nghiệm tương tác của Intelex Labs.">
+    <title>Lab Playground — Intelex Labs</title>
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/workspace.css">
+  </head>
+  <body data-page="workspace">
+    <header class="editor-topbar playground-topbar">
+      <a class="editor-brand" href="./index.html" aria-label="Quay lại Intelex Labs"><img class="editor-brand__icon" src="../assets/icons/intelex-logo.ico" alt=""><strong>Intelex Labs</strong></a>
+      <nav class="editor-menu" aria-label="Điều hướng Lab">
+        <a href="./index.html">Tất cả Labs</a>
+        <button type="button" data-reset-lab>Đặt lại ví dụ</button>
+      </nav>
+      <div class="editor-status"><span class="status-pill status-pill--preview">Interactive preview</span></div>
+    </header>
+
+    <main class="playground" data-playground>
+      <aside class="playground-sidebar">
+        <a class="workspace-back" href="./index.html">← Quay lại danh mục</a>
+        <p class="eyebrow" data-lab-category>Intelex Labs</p>
+        <h1 data-lab-title>Lab Playground</h1>
+        <p data-lab-summary>Chọn một Lab từ danh mục để bắt đầu trải nghiệm.</p>
+        <div class="workspace-note">Đây là bản thử nghiệm chạy hoàn toàn trong trình duyệt. Dữ liệu ví dụ không được gửi đi.</div>
+        <nav class="playground-switcher" aria-label="Đổi Lab" data-lab-switcher></nav>
+      </aside>
+      <section class="playground-stage">
+        <div class="playground-toolbar">
+          <p data-stage-label>Ví dụ tương tác</p>
+          <span class="status-pill" data-stage-status>Sẵn sàng</span>
+        </div>
+        <div class="playground-workspace" data-playground-workspace></div>
+      </section>
+    </main>
+    <script src="../assets/js/labs-data.js"></script>
+    <script src="../assets/js/lab-playground.js"></script>
+  </body>
+</html>

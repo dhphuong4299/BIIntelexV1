@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <link rel="icon" href="../assets/icons/intelex-logo.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Circuit & Logic Lab preview: lắp cổng logic, đặt tín hiệu đầu vào và quan sát kết quả ngay trên trình duyệt.">
+    <title>Circuit & Logic Lab — Intelex Labs</title>
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/workspace.css">
+  </head>
+  <body data-page="workspace">
+    <header class="editor-topbar">
+      <a class="editor-brand" href="../index.html" aria-label="INTELEX home">
+        <img class="editor-brand__icon" src="../assets/icons/intelex-logo.ico" alt="">
+        <strong>Intelex Labs</strong>
+      </a>
+      <nav class="editor-menu" aria-label="Menu workspace">
+        <a href="./index.html">Tất cả Labs</a>
+        <button type="button" data-load-example>Mở ví dụ</button>
+        <button type="button" data-help>Hướng dẫn</button>
+        <button type="button" data-run-demo>Chạy mô phỏng</button>
+      </nav>
+      <div class="editor-status">
+        <span class="status-pill status-pill--preview">Interactive preview</span>
+        <span data-unsaved-status>Bạn có thay đổi chưa lưu.</span>
+      </div>
+    </header>
+
+    <main class="circuit-editor" data-workspace>
+      <aside class="component-dock" aria-label="Thư viện linh kiện">
+        <form class="component-search" role="search">
+          <label class="sr-only" for="component-query">Tìm linh kiện</label>
+          <input id="component-query" type="search" placeholder="Press '/' to search" autocomplete="off" data-component-query>
+        </form>
+
+        <section class="component-group">
+          <h2>Digital Primitives</h2>
+          <div class="component-grid">
+            <button class="component-tile is-active" type="button" data-add-component="INPUT_A">
+              <span class="tile-symbol tile-symbol--input">0/1</span>
+              <small>Input A</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="INPUT_B">
+              <span class="tile-symbol tile-symbol--input">0/1</span>
+              <small>Input B</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="CLOCK">
+              <span class="tile-symbol tile-symbol--clock"></span>
+              <small>Clock</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="PROBE">
+              <span class="tile-symbol tile-symbol--probe">?</span>
+              <small>Probe</small>
+            </button>
+          </div>
+        </section>
+
+        <section class="component-group">
+          <h2>Digital Gates</h2>
+          <div class="component-grid">
+            <button class="component-tile" type="button" data-add-component="BUF">
+              <span class="gate-icon gate-icon--buf" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M10 6 52 22 10 38Z"/></svg></span>
+              <small>Buffer</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="NOT">
+              <span class="gate-icon gate-icon--not" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M8 6 48 22 8 38Z"/><circle cx="54" cy="22" r="5"/></svg></span>
+              <small>NOT</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="AND">
+              <span class="gate-icon gate-icon--and" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M8 6h20a16 16 0 0 1 0 32H8Z"/></svg></span>
+              <small>AND</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="OR">
+              <span class="gate-icon gate-icon--or" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M8 6c12 0 19 3 24 16-5 13-12 16-24 16 8-9 8-23 0-32Zm0 0c10 0 20 4 27 16-7 12-17 16-27 16"/></svg></span>
+              <small>OR</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="XOR">
+              <span class="gate-icon gate-icon--xor" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M8 6c12 0 19 3 24 16-5 13-12 16-24 16 8-9 8-23 0-32Zm0 0c10 0 20 4 27 16-7 12-17 16-27 16M2 6c8 9 8 23 0 32"/></svg></span>
+              <small>XOR</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="NAND">
+              <span class="gate-icon gate-icon--nand" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M6 6h20a16 16 0 0 1 0 32H6Z"/><circle cx="54" cy="22" r="5"/></svg></span>
+              <small>NAND</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="NOR">
+              <span class="gate-icon gate-icon--nor" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M6 6c12 0 19 3 24 16-5 13-12 16-24 16 8-9 8-23 0-32Zm0 0c10 0 20 4 27 16-7 12-17 16-27 16"/><circle cx="55" cy="22" r="5"/></svg></span>
+              <small>NOR</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="XNOR">
+              <span class="gate-icon gate-icon--xnor" aria-hidden="true"><svg viewBox="0 0 64 44"><path d="M8 6c12 0 19 3 24 16-5 13-12 16-24 16 8-9 8-23 0-32Zm0 0c10 0 20 4 27 16-7 12-17 16-27 16M2 6c8 9 8 23 0 32"/><circle cx="55" cy="22" r="5"/></svg></span>
+              <small>XNOR</small>
+            </button>
+          </div>
+        </section>
+
+        <section class="component-group">
+          <h2>Probes / Meters</h2>
+          <div class="component-grid">
+            <button class="component-tile" type="button" data-add-component="LED">
+              <span class="tile-symbol tile-symbol--led"></span>
+              <small>LED</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="WIRE">
+              <span class="tile-symbol tile-symbol--wire"></span>
+              <small>Wire</small>
+            </button>
+            <button class="component-tile" type="button" data-add-component="NODE">
+              <span class="tile-symbol tile-symbol--node">●</span>
+              <small>Node</small>
+            </button>
+          </div>
+        </section>
+      </aside>
+
+      <section class="editor-canvas-shell" aria-label="Canvas mô phỏng mạch số">
+        <div class="canvas-toolbar">
+          <nav class="workspace-breadcrumb" aria-label="Breadcrumb">
+            <a href="./index.html">Labs</a>
+            <span aria-hidden="true">/</span>
+            <a href="./index.html?category=electronics-iot">Điện tử số</a>
+            <span aria-hidden="true">/</span>
+            <span>Circuit & Logic Lab</span>
+          </nav>
+          <div class="canvas-actions">
+            <button class="icon-button" type="button" data-load-example>Mở ví dụ</button>
+            <button class="icon-button" type="button" data-save-circuit>Lưu cục bộ</button>
+            <button class="icon-button" type="button" data-export-circuit>Xuất JSON</button>
+            <button class="icon-button" type="button" data-clear-circuit>Đặt lại</button>
+            <button class="icon-button" type="button" data-zoom-out aria-label="Zoom out">−</button>
+            <span class="zoom-readout" data-zoom-readout>100%</span>
+            <button class="icon-button" type="button" data-zoom-in aria-label="Zoom in">+</button>
+            <button class="icon-button" type="button" data-fit-canvas>Fit</button>
+            <span class="status-pill" data-offline-status>Offline chưa xác minh</span>
+          </div>
+        </div>
+
+        <div class="schematic-canvas" data-canvas-placeholder>
+          <button class="schematic-node schematic-node--input schematic-node--a is-on" type="button" data-node="A" data-input-toggle="A" aria-pressed="true">
+            <span>A</span>
+            <strong data-signal-a>1</strong>
+          </button>
+          <button class="schematic-node schematic-node--input schematic-node--b is-on" type="button" data-node="B" data-input-toggle="B" aria-pressed="true">
+            <span>B</span>
+            <strong data-signal-b>1</strong>
+          </button>
+          <div class="schematic-wire schematic-wire--a is-on" aria-hidden="true"></div>
+          <div class="schematic-wire schematic-wire--b is-on" aria-hidden="true"></div>
+          <button class="schematic-gate schematic-gate--and is-selected" type="button" data-node="GATE">
+            <span data-gate-label>AND1</span>
+          </button>
+          <div class="schematic-wire schematic-wire--out is-on" aria-hidden="true"></div>
+          <button class="schematic-label schematic-label--node is-on" type="button" data-node="Y">
+            <span>NODE1</span>
+            <strong data-output-y>1</strong>
+          </button>
+          <div class="schematic-led is-on" data-led-state>
+            <span aria-hidden="true"></span>
+            <strong>LED ON</strong>
+          </div>
+          <div class="canvas-hint">
+            <strong data-circuit-formula>A AND B → Y</strong>
+            <span data-circuit-hint>Chọn một cổng trong palette, sau đó click A hoặc B để thử tín hiệu.</span>
+          </div>
+        </div>
+
+        <div class="editor-bottom-bar">
+          <div class="bottom-tools" aria-label="Chế độ workspace">
+            <button class="bottom-tool" type="button" aria-label="Pan canvas">＋</button>
+            <button class="bottom-tool" type="button" aria-label="Select tool">↖</button>
+            <button class="bottom-tab is-active" type="button" data-mode="build">Build</button>
+            <button class="bottom-tab" type="button" data-mode="simulate">Simulate</button>
+            <button class="bottom-tool" type="button" aria-label="Undo" data-undo>↶</button>
+            <button class="bottom-tool" type="button" aria-label="Redo" data-redo>↷</button>
+            <button class="bottom-tool" type="button" aria-label="Toggle grid" data-toggle-grid>▦</button>
+            <button class="bottom-tab" type="button" data-cycle-inputs>Auto test</button>
+          </div>
+          <div class="simulation-readout">
+            <span data-sim-status>A=1, B=1, Y=1. LED đầu ra bật.</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="inspector-dock" aria-label="Inspector">
+        <div class="inspector-heading">
+          <p class="eyebrow">Inspector</p>
+          <button class="inspector-toggle" type="button" data-toggle-inspector aria-expanded="true" aria-controls="inspector-content" aria-label="Đóng Properties">×</button>
+        </div>
+        <div id="inspector-content" class="inspector-content">
+        <h1>Circuit & Logic Lab</h1>
+        <p class="inspector-lead">Lắp cổng logic, đặt tín hiệu đầu vào và quan sát kết quả ngay trên trình duyệt.</p>
+        <h2 data-inspector-title>AND Gate</h2>
+        <p data-inspector-summary>Thay đổi cổng hoặc tín hiệu để quan sát kết quả ngay.</p>
+
+        <dl class="meta-list">
+          <div>
+            <dt>Loại linh kiện</dt>
+            <dd data-inspector-type>AND</dd>
+          </div>
+          <div>
+            <dt>Số ngõ vào</dt>
+            <dd data-inspector-inputs>2</dd>
+          </div>
+          <div>
+            <dt>Giá trị tín hiệu</dt>
+            <dd data-inspector-value>Y = 1</dd>
+          </div>
+          <div>
+            <dt>Lỗi đấu nối</dt>
+            <dd data-inspector-error>Không có lỗi trong ví dụ mẫu.</dd>
+          </div>
+        </dl>
+
+        <section class="result-card" aria-label="Waveform">
+          <div class="result-heading">
+            <h2>Waveform</h2>
+            <p>Trạng thái hiện tại của A, B và Y.</p>
+          </div>
+          <div class="waveform-grid" data-waveform>
+            <span>A</span>
+            <div class="signal-line signal-line--on"></div>
+            <span>B</span>
+            <div class="signal-line"></div>
+            <span>Y</span>
+            <div class="signal-line"></div>
+          </div>
+        </section>
+
+        <section class="result-card" aria-label="Bảng chân trị">
+          <div class="result-heading">
+            <h2>Bảng chân trị</h2>
+            <p data-truth-description>Chọn một cổng logic để xem quy tắc đầu ra.</p>
+          </div>
+          <table class="truth-table">
+            <thead>
+              <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>Y</th>
+              </tr>
+            </thead>
+            <tbody data-truth-table></tbody>
+          </table>
+        </section>
+
+        <section class="result-card logic-manual-test" aria-label="Test thủ công">
+          <div class="result-heading">
+            <h2>Test thủ công</h2>
+            <p>Chọn cổng và thay đổi A/B để xem đầu ra tức thời.</p>
+          </div>
+          <label>Cổng logic
+            <select data-manual-gate></select>
+          </label>
+          <div class="manual-switches">
+            <button type="button" data-manual-input="a">A: <strong data-manual-a>0</strong></button>
+            <button type="button" data-manual-input="b">B: <strong data-manual-b>0</strong></button>
+          </div>
+          <div class="manual-result">Y = <strong data-manual-y>0</strong></div>
+        </section>
+
+        <div class="workspace-note" data-workspace-note>
+          Lab này là môi trường mô phỏng phục vụ học tập, không phải thiết bị đo thực địa.
+        </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="../assets/js/workspace-circuit-demo.js"></script>
+  </body>
+</html>

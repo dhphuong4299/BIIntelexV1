@@ -1,0 +1,19 @@
+:root {
+  --ink: #18212e;
+  --gold: #c49a45;
+  --gold-pale: #f6ebd2;
+  --ivory: #faf9f5;
+  --surface: #ffffff;
+  --border: #e4e4e2;
+  --muted: #5c6a78;
+  --tech-blue: #4766dd;
+  --signal-teal: #129d83;
+  --violet: #8174d8;
+  --danger: #b42318;
+  --shadow-soft: 0 18px 48px rgba(24, 33, 46, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --container: 1200px;
+  --header-height: 72px;
+}
