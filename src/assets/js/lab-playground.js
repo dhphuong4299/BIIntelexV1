@@ -61,6 +61,141 @@
     workspace.querySelector('[data-send-chart]').addEventListener('click', function () { var values = filteredRows().map(function (row) { return row.value; }); try { window.localStorage.setItem('intelex-chart-values', JSON.stringify(values)); } catch (error) {} window.location.href = '../chart-studio/index.html'; });
     render();
   }
+  function dataExplorer() {
+    var core = window.INTELEX_DATA_CORE;
+    var sampleDataset = core ? core.createDataset(['Tháng', 'Nhóm', 'Chỉ số'], sampleRows.map(function (row) { return [row.month, row.team, row.value]; }), { name: 'Dữ liệu mẫu', source: 'sample' }) : null;
+    var dataset = sampleDataset;
+    var workbook = null;
+    var maxRows = 250;
+    var typeLabels = { text: 'Văn bản', number: 'Số', percent: 'Phần trăm', currency: 'Tiền tệ', date: 'Ngày', boolean: 'Đúng/Sai' };
+
+    workspace.innerHTML = '<div class="data-explorer"><aside class="data-explorer__controls"><p class="eyebrow">Nguồn dữ liệu</p><h2>Khám phá dữ liệu</h2><button class="button button--primary" type="button" data-load-sample>Dùng dữ liệu mẫu</button><label class="data-upload">Nhập CSV hoặc Excel<input data-data-input type="file" accept=".csv,.tsv,.txt,.xlsx,.xls,text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"><span>Chọn tệp CSV / XLSX</span></label><small>Xử lý cục bộ trong trình duyệt. Hỗ trợ nhiều cột, CSV/TSV và XLSX/XLS.</small><label data-sheet-wrap hidden>Trang tính Excel<select data-sheet-select></select></label><hr><label>Tìm toàn bộ dữ liệu<input data-data-search type="search" placeholder="Tìm ở mọi cột"></label><label>Cột số để gửi sang Chart Studio<select data-chart-column></select></label><button class="button button--secondary" type="button" data-reset-filter>Đặt lại bộ lọc</button></aside><section class="data-explorer__main"><div class="data-explorer__toolbar"><div><strong data-row-count>0 bản ghi</strong><span data-source-summary>Dữ liệu được xử lý cục bộ trong trình duyệt.</span></div><button class="button button--primary" type="button" data-send-chart>Mở trong Chart Studio</button></div><section><div class="data-section-heading"><div><p class="eyebrow">Data profiling</p><h2>Hồ sơ cột</h2></div></div><div class="data-profile-grid" data-data-profiles></div></section><section class="data-insights"><div class="data-section-heading"><div><p class="eyebrow">Kiểm tra dữ liệu</p><h2>Điểm đáng chú ý</h2></div></div><div data-data-insights></div></section><section class="data-table-panel"><div class="data-section-heading"><div><p class="eyebrow">Dữ liệu đã nhập</p><h2 data-table-title>Bảng dữ liệu</h2></div></div><div class="data-table-wrap"><table><thead data-data-head></thead><tbody data-data-body></tbody></table></div></section></section></div>';
+
+    function formatValue(value, column) {
+      if (value === null || value === undefined || value === '') return '—';
+      if (column.type === 'percent' && typeof value === 'number') return value + '%';
+      if (column.type === 'currency' && typeof value === 'number') return value.toLocaleString('vi-VN');
+      if (column.type === 'boolean') return value ? 'Có' : 'Không';
+      return String(value);
+    }
+    function numericColumns() { return dataset ? dataset.columns.filter(function (column) { return ['number', 'percent', 'currency'].indexOf(column.type) > -1; }) : []; }
+    function selectedColumn() {
+      var select = workspace.querySelector('[data-chart-column]');
+      return numericColumns().filter(function (column) { return column.name === select.value; })[0];
+    }
+    function filteredRows() {
+      var query = workspace.querySelector('[data-data-search]').value.trim().toLocaleLowerCase();
+      if (!dataset || !query) return dataset ? dataset.rows : [];
+      return dataset.rows.filter(function (row) {
+        return dataset.columns.some(function (column) { return String(row[column.name] == null ? '' : row[column.name]).toLocaleLowerCase().indexOf(query) > -1; });
+      });
+    }
+    function renderProfiles(rows) {
+      var columns = dataset.columns.slice(0, 8);
+      workspace.querySelector('[data-data-profiles]').innerHTML = columns.map(function (column) {
+        var numeric = ['number', 'percent', 'currency'].indexOf(column.type) > -1;
+        var values = rows.map(function (row) { return row[column.name]; }).filter(function (value) { return value !== null && value !== ''; });
+        var detail = typeLabels[column.type] + ' · ' + column.unique + ' giá trị khác nhau';
+        var value = column.empty + ' trống';
+        if (numeric && values.length) {
+          var numbers = values.map(Number).filter(Number.isFinite);
+          value = Math.min.apply(null, numbers) + ' → ' + Math.max.apply(null, numbers);
+          detail = typeLabels[column.type] + ' · TB ' + (numbers.reduce(function (sum, number) { return sum + number; }, 0) / numbers.length).toFixed(2);
+        }
+        return profileCard(column.name, detail, value, numeric ? 'is-gold' : (column.type === 'date' ? 'is-blue' : ''));
+      }).join('') || profileCard('Chưa có dữ liệu', 'Chọn một tệp để bắt đầu', '—');
+    }
+    function renderInsights(rows) {
+      var blankCount = dataset.columns.reduce(function (sum, column) { return sum + column.empty; }, 0);
+      var numeric = selectedColumn();
+      var values = numeric ? rows.map(function (row) { return row[numeric.name]; }).filter(Number.isFinite) : [];
+      var highest = values.length ? Math.max.apply(null, values) : null;
+      var messages = [
+        '<article class="data-insight"><strong>Độ đầy đủ</strong><span>' + dataset.columns.length + ' cột, ' + dataset.rows.length + ' dòng; phát hiện ' + blankCount + ' ô trống.</span></article>',
+        numeric ? '<article class="data-insight"><strong>Cột để vẽ</strong><span>' + escapeHtml(numeric.name) + ' có ' + values.length + ' giá trị số hợp lệ' + (highest === null ? '.' : ', lớn nhất là ' + highest + '.') + '</span></article>' : '<article class="data-insight"><strong>Chưa có cột số</strong><span>Chart Studio cần tối thiểu một cột số để tạo biểu đồ.</span></article>'
+      ];
+      workspace.querySelector('[data-data-insights]').innerHTML = messages.join('');
+    }
+    function renderTable(rows) {
+      workspace.querySelector('[data-data-head]').innerHTML = '<tr>' + dataset.columns.map(function (column) { return '<th>' + escapeHtml(column.name) + '<small> · ' + escapeHtml(typeLabels[column.type]) + '</small></th>'; }).join('') + '</tr>';
+      workspace.querySelector('[data-data-body]').innerHTML = rows.slice(0, maxRows).map(function (row) {
+        return '<tr>' + dataset.columns.map(function (column) { return '<td>' + escapeHtml(formatValue(row[column.name], column)) + '</td>'; }).join('') + '</tr>';
+      }).join('') || '<tr><td colspan="' + dataset.columns.length + '">Không có bản ghi phù hợp.</td></tr>';
+    }
+    function render() {
+      if (!dataset) return;
+      var rows = filteredRows();
+      var select = workspace.querySelector('[data-chart-column]');
+      var currentValue = select.value;
+      var options = numericColumns();
+      select.innerHTML = options.map(function (column) { return '<option value="' + escapeHtml(column.name) + '">' + escapeHtml(column.name) + ' · ' + escapeHtml(typeLabels[column.type]) + '</option>'; }).join('') || '<option value="">Không có cột số</option>';
+      if (options.some(function (column) { return column.name === currentValue; })) select.value = currentValue;
+      select.disabled = !options.length;
+      workspace.querySelector('[data-row-count]').textContent = rows.length + ' / ' + dataset.rows.length + ' bản ghi';
+      workspace.querySelector('[data-source-summary]').textContent = dataset.name + ' · ' + dataset.columns.length + ' cột · hiển thị tối đa ' + maxRows + ' dòng.';
+      workspace.querySelector('[data-table-title]').textContent = dataset.name;
+      renderProfiles(rows);
+      renderInsights(rows);
+      renderTable(rows);
+      setStatus('Đã đọc ' + dataset.rows.length + ' dòng từ ' + dataset.name);
+    }
+    function useDataset(nextDataset) {
+      dataset = nextDataset;
+      workspace.querySelector('[data-data-search]').value = '';
+      render();
+    }
+    function loadSheet(sheetName) {
+      try {
+        var sheet = workbook.Sheets[sheetName];
+        var matrix = window.XLSX.utils.sheet_to_json(sheet, { header: 1, defval: '', raw: false });
+        useDataset(core.createDataset(matrix[0], matrix.slice(1), { name: workbook.fileName + ' · ' + sheetName, source: 'xlsx' }));
+      } catch (error) { setStatus('Không đọc được trang tính: ' + error.message); }
+    }
+    function importFile(file) {
+      if (!core) { setStatus('Thiếu mô-đun xử lý dữ liệu. Hãy tải lại trang.'); return; }
+      if (file.size > 15 * 1024 * 1024) { setStatus('Tệp lớn hơn 15 MB; hãy dùng tệp nhỏ hơn để tránh treo trình duyệt.'); return; }
+      var extension = (file.name.split('.').pop() || '').toLocaleLowerCase();
+      setStatus('Đang đọc ' + file.name + '…');
+      if (extension === 'xlsx' || extension === 'xls') {
+        if (!window.XLSX) { setStatus('Chưa tải được bộ đọc Excel. Kiểm tra kết nối Internet rồi tải lại trang.'); return; }
+        var binaryReader = new FileReader();
+        binaryReader.onload = function () {
+          try {
+            workbook = window.XLSX.read(binaryReader.result, { type: 'array' }); workbook.fileName = file.name;
+            var sheetNames = workbook.SheetNames || [];
+            if (!sheetNames.length) throw new Error('Tệp Excel không có trang tính.');
+            var sheetSelect = workspace.querySelector('[data-sheet-select]');
+            sheetSelect.innerHTML = sheetNames.map(function (name) { return '<option value="' + escapeHtml(name) + '">' + escapeHtml(name) + '</option>'; }).join('');
+            workspace.querySelector('[data-sheet-wrap]').hidden = sheetNames.length < 2;
+            loadSheet(sheetNames[0]);
+          } catch (error) { setStatus('Không đọc được Excel: ' + error.message); }
+        };
+        binaryReader.onerror = function () { setStatus('Không thể đọc tệp Excel từ thiết bị.'); };
+        binaryReader.readAsArrayBuffer(file);
+      } else {
+        var textReader = new FileReader();
+        textReader.onload = function () { try { workspace.querySelector('[data-sheet-wrap]').hidden = true; useDataset(core.parseCsv(String(textReader.result || ''), { name: file.name })); } catch (error) { setStatus('Không đọc được tệp: ' + error.message); } };
+        textReader.onerror = function () { setStatus('Không thể đọc tệp từ thiết bị.'); };
+        textReader.readAsText(file);
+      }
+    }
+
+    workspace.querySelector('[data-data-input]').addEventListener('change', function (event) { if (event.target.files[0]) importFile(event.target.files[0]); event.target.value = ''; });
+    workspace.querySelector('[data-sheet-select]').addEventListener('change', function (event) { loadSheet(event.target.value); });
+    workspace.querySelector('[data-data-search]').addEventListener('input', render);
+    workspace.querySelector('[data-chart-column]').addEventListener('change', render);
+    workspace.querySelector('[data-load-sample]').addEventListener('click', function () { workbook = null; workspace.querySelector('[data-sheet-wrap]').hidden = true; useDataset(sampleDataset); setStatus('Đã nạp dữ liệu mẫu'); });
+    workspace.querySelector('[data-reset-filter]').addEventListener('click', function () { workspace.querySelector('[data-data-search]').value = ''; render(); });
+    workspace.querySelector('[data-send-chart]').addEventListener('click', function () {
+      var column = selectedColumn();
+      var values = column ? filteredRows().map(function (row) { return row[column.name]; }).filter(Number.isFinite).slice(0, 18) : [];
+      if (!values.length) { setStatus('Hãy chọn một cột số có dữ liệu trước khi mở Chart Studio.'); return; }
+      try { window.localStorage.setItem('intelex-chart-values', JSON.stringify(values)); } catch (error) {}
+      window.location.href = '../chart-studio/index.html';
+    });
+    if (!core) setStatus('Không thể khởi động Data Explorer vì thiếu mô-đun dữ liệu.'); else render();
+  }
+
   function chartStudio() {
     var chartTypes = [
       { type: 'bar', label: 'Cột', description: 'So sánh nhóm' },
