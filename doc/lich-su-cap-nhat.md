@@ -2,17 +2,6 @@
 
 > Tài liệu này là lịch sử được tổng hợp từ mã nguồn hiện tại, các file tài liệu trong `doc/` và trường ngày trong dữ liệu. Repository hiện không có thư mục `.git` ở bản làm việc này, vì vậy không thể khẳng định đây là lịch sử commit đầy đủ.
 
-### 2026-10-28 — Data Explorer: nhập dữ liệu an toàn v2
-
-- Khôi phục việc nhập dữ liệu **chỉ trong Data Explorer**, không thay đổi giao diện hay thêm bộ nhập file cho Chart Studio.
-- Tách lõi xử lý dữ liệu thành `src/assets/js/data-core.js` để giảm rủi ro ảnh hưởng các Lab khác.
-- Hỗ trợ CSV, TSV, XLSX và XLS; Excel nhiều sheet cho phép chọn trang tính cần đọc.
-- Đọc toàn bộ cột, giữ ô trống đúng vị trí, xử lý dấu nháy kép/dấu phân cách trong CSV và tự đặt tên an toàn cho cột trống hoặc trùng tên.
-- Nhận diện văn bản, số, tiền tệ, phần trăm, ngày và giá trị đúng/sai; hiển thị profiling theo từng cột.
-- Chart Studio chỉ nhận tối đa 18 giá trị từ cột số mà người dùng chọn trong Data Explorer; giao diện Chart Studio không thay đổi.
-- Bổ sung kiểm thử Node cho parser: CSV dấu phẩy/chấm phẩy/tab, nội dung có dấu nháy và xuống dòng, ô trống, số định dạng Việt Nam, tiền tệ, phần trăm, ngày, boolean và ma trận dữ liệu Excel.
-- Kiểm tra cú pháp JavaScript, `git diff --check` và khả năng truy cập thư viện SheetJS từ CDN trước khi tích hợp.
-
 ### 2026-10-28 — Rollback Data Workspace
 
 - Theo xác nhận của người dùng, đã gỡ các chức năng nhập CSV/XLSX và Data Workspace của Giai đoạn 1–3.
