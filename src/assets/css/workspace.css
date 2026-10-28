@@ -1324,6 +1324,23 @@ body[data-page="workspace"] {
 @media (max-width: 960px) { .industrial-studio { grid-template-columns: 210px minmax(0, 1fr); }.industrial-bottom { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .industrial-studio { grid-template-columns: 1fr; }.industrial-kpis { grid-template-columns: 1fr 1fr; }.industrial-toolbar { align-items: start; flex-direction: column; }.factory-floor { min-height: 430px; }.factory-conveyor { left: 6%; width: 88%; }.factory-machine--feeder { left: 2%; }.factory-machine--packer { right: 2%; }.factory-robot { right: 22%; }.factory-bin--good { right: 10%; }.factory-bin--reject { right: 1%; }.industrial-bottom { grid-template-columns: 1fr; } }
 
+/* Industrial robot visual correction: keep the elbow and wrist aligned. */
+.factory-robot { right: 24%; bottom: 24%; width: 150px; height: 190px; }
+.robot-base { left: 38px; width: 74px; height: 26px; border-radius: 9px; box-shadow: 0 4px 0 rgba(58,70,85,.12); }
+.robot-arm { width: 20px; background: linear-gradient(90deg, #7658bd, #9a7be0 55%, #7658bd); border-radius: 10px; }
+.robot-arm--one { left: 65px; bottom: 22px; height: 86px; transform-origin: 50% 100%; transform: rotate(24deg); }
+.robot-arm--two { left: 30px; bottom: 101px; height: 68px; transform-origin: 50% 100%; transform: rotate(-48deg); }
+.robot-arm--one::after, .robot-arm--two::after { position: absolute; left: 50%; width: 25px; height: 25px; content: ''; background: #596879; border: 3px solid #f7fbfc; border-radius: 50%; box-shadow: 0 2px 5px rgba(24,33,46,.25); transform: translateX(-50%); }
+.robot-arm--one::after { top: -10px; background: #f7fbfc; border-color: #596879; }
+.robot-arm--two::after { bottom: -10px; }
+.robot-gripper { top: 26px; left: 73px; width: 34px; height: 20px; color: transparent; border: 3px solid #694aa0; border-bottom: 0; border-radius: 11px 11px 0 0; transform: rotate(42deg); }
+.robot-gripper::before, .robot-gripper::after { position: absolute; bottom: -10px; width: 7px; height: 13px; content: ''; background: #9a7be0; border: 2px solid #694aa0; border-radius: 0 0 5px 5px; }
+.robot-gripper::before { left: 2px; transform: rotate(18deg); transform-origin: top; }
+.robot-gripper::after { right: 2px; transform: rotate(-18deg); transform-origin: top; }
+.factory-robot > span { left: 15px; width: 120px; }
+.factory-robot.is-active .robot-arm--one { animation: robot-pick 1s ease-in-out infinite alternate; }
+@media (max-width: 640px) { .factory-robot { right: 17%; bottom: 22%; transform: scale(.9); transform-origin: bottom right; } }
+
 /* Physics & Engineering Lab */
 .physics-studio { display: grid; grid-template-columns: 238px minmax(0, 1fr); min-height: 720px; gap: 14px; }
 .physics-sidebar, .physics-main > *, .physics-card { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
@@ -1345,6 +1362,7 @@ body[data-page="workspace"] {
 .physics-robot-stage { min-height: 450px; background-color: #f4f7f8; background-size: 36px 36px; }
 .physics-robot-svg { position: absolute; inset: 7% 9% 11%; width: 82%; height: 82%; overflow: visible; }
 .physics-link { fill: none; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 4px 2px rgba(49,58,72,.18)); }
+.physics-link, .physics-joint, .physics-endpoint, .physics-gripper, .physics-target-svg, .physics-target-label { transition: x1 .14s cubic-bezier(.22,.61,.36,1), y1 .14s cubic-bezier(.22,.61,.36,1), x2 .14s cubic-bezier(.22,.61,.36,1), y2 .14s cubic-bezier(.22,.61,.36,1), cx .14s cubic-bezier(.22,.61,.36,1), cy .14s cubic-bezier(.22,.61,.36,1), d .14s cubic-bezier(.22,.61,.36,1), fill .14s ease, stroke .14s ease; }
 .physics-link--first { stroke: #8061cf; stroke-width: 4.8; }
 .physics-link--second { stroke: #a184e4; stroke-width: 4.8; }
 .physics-joint { fill: #566577; stroke: white; stroke-width: 1.2; filter: drop-shadow(0 2px 2px rgba(24,33,46,.2)); }
