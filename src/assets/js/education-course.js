@@ -2,6 +2,11 @@
   var slug = document.body.getAttribute("data-course-slug");
   var course = (window.INTELEX_COURSE_DETAILS || {})[slug];
   if (!course) return;
+  var favicon = document.createElement("link");
+  favicon.rel = "icon";
+  favicon.type = "image/x-icon";
+  favicon.href = "../../../assets/icons/intelex-logo.ico";
+  document.head.appendChild(favicon);
   var esc = function (value) { return String(value == null ? "" : value).replace(/[&<>\"']/g, function (character) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[character]; }); };
   var catalog = window.INTELEX_COURSES || [];
   var summary = catalog.filter(function (item) { return item.slug === slug; })[0] || {};
