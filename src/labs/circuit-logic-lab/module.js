@@ -1,4 +1,7 @@
-(function () {
+(function (root) {
+  'use strict';
+
+  function circuitLogicLab(context) {
   var canvas = document.querySelector('[data-canvas-placeholder]'); if (!canvas) return;
   var storageKey = 'intelex-circuit-lab-v3', nextId = 5, pendingPort = null, selectedId = 'gate1', selectedWireId = null, running = false, timer = null, mode = 'build', gridHidden = false, zoomLevel = 1, inspectorCollapsed = false;
   var initialNodes = [{ id: 'inputA', type: 'INPUT', label: 'A', value: 1, x: 70, y: 150 }, { id: 'inputB', type: 'INPUT', label: 'B', value: 1, x: 70, y: 290 }, { id: 'gate1', type: 'AND', label: 'AND 1', x: 330, y: 210 }, { id: 'outputY', type: 'OUTPUT', label: 'Y', x: 620, y: 240 }];
@@ -42,4 +45,9 @@
   document.querySelector('[data-manual-gate]').addEventListener('change', function () { manual.gate = this.value; renderManualTest(); }); Array.prototype.slice.call(document.querySelectorAll('[data-manual-input]')).forEach(function (button) { button.addEventListener('click', function () { var key = button.dataset.manualInput; manual[key] = manual[key] ? 0 : 1; renderManualTest(); }); });
   try { var saved = JSON.parse(localStorage.getItem(storageKey)); if (saved && Array.isArray(saved.nodes) && Array.isArray(saved.wires)) { nodes = saved.nodes; wires = saved.wires; nextId = saved.nextId || nextId; } } catch (error) {}
   render();
-})();
+  }
+
+  root.IntelexLabRuntime.register({ slug: 'circuit-logic-lab', phase: 'module', mount: circuitLogicLab });
+  if (document.querySelector('[data-canvas-placeholder]')) root.IntelexLabRuntime.mount('circuit-logic-lab', {});
+})(window);
+

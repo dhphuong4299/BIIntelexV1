@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <link rel="icon" href="../assets/icons/intelex-logo.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Khám phá các chương trình đào tạo công nghệ thực hành tại Intelex.">
+    <title>Giáo Dục · Intelex</title>
+    <link rel="stylesheet" href="../assets/css/tokens.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    <link rel="stylesheet" href="../assets/css/education.css">
+  </head>
+  <body data-page="education">
+    <header class="site-header" data-site-header>
+      <a class="brand" href="../index.html" aria-label="INTELEX home"><img class="brand__mark" src="../assets/icons/intelex-logo.png" alt="INTELEX"></a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Mở menu</span><span class="nav-toggle__line"></span><span class="nav-toggle__line"></span></button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Điều hướng chính">
+        <a href="../index.html" data-nav-link>Khám phá</a>
+        <a href="../labs/index.html" data-nav-link>Labs</a>
+        <a href="../projects/index.html" data-nav-link>Dự án</a>
+        <a href="../community/index.html" data-nav-link>Cộng đồng</a>
+        <a href="./index.html" data-nav-link>Giáo Dục</a>
+        <a href="../about/index.html" data-nav-link>Về Intelex</a>
+      </nav>
+      <a class="header-cta" href="#courses">Xem khóa học</a>
+    </header>
+
+    <main>
+      <section class="education-hero">
+        <div>
+          <p class="eyebrow">EDUCATION · LEARN BY BUILDING</p>
+          <h1>Giáo Dục tại Intelex</h1>
+          <p class="education-hero__lead">Học công nghệ qua dự án, bài thực hành và những vấn đề gần với công việc thật — từ nền tảng dữ liệu đến AI, phần mềm và vận hành.</p>
+          <div class="button-row"><a class="button button--primary" href="#courses">Khám phá khóa học</a><a class="button button--secondary" href="#consulting">Yêu cầu tư vấn</a></div>
+          <p class="hero__microcopy">Nội dung, lịch học và học phí sẽ được công bố sau khi Intelex xác nhận chính thức.</p>
+        </div>
+        <div class="education-hero__signal" aria-label="Mô hình học tập tại Intelex">
+          <div class="signal-node signal-node--problem"><span>01</span><strong>Bài toán</strong><small>Thực tế</small></div>
+          <div class="signal-line"></div>
+          <div class="signal-node signal-node--lab"><span>02</span><strong>Thực hành</strong><small>Labs & dự án</small></div>
+          <div class="signal-line"></div>
+          <div class="signal-node signal-node--outcome"><span>03</span><strong>Năng lực</strong><small>Ứng dụng được</small></div>
+        </div>
+      </section>
+
+      <section class="section education-benefits">
+        <div class="section__header"><p class="eyebrow">Why Intelex</p><h2>Học để làm được việc</h2><p>Mỗi chương trình được định hướng quanh năng lực, công cụ và ngữ cảnh ứng dụng — không chỉ là danh sách lý thuyết.</p></div>
+        <div class="feature-grid feature-grid--four">
+          <article class="feature-card"><span class="education-index">01</span><h3>Học theo dự án</h3><p>Đi từ vấn đề đến sản phẩm thử nghiệm có thể quan sát và cải tiến.</p></article>
+          <article class="feature-card"><span class="education-index">02</span><h3>Thực hành trực tiếp</h3><p>Kết hợp bài tập, Labs và thảo luận để hiểu cách công nghệ vận hành.</p></article>
+          <article class="feature-card"><span class="education-index">03</span><h3>Tư duy liên ngành</h3><p>Kết nối dữ liệu, phần mềm, AI, IoT và tự động hóa trong một bức tranh chung.</p></article>
+          <article class="feature-card"><span class="education-index">04</span><h3>Gắn với doanh nghiệp</h3><p>Ưu tiên ngữ cảnh công việc thật, với thông tin rõ ràng về phạm vi và trạng thái.</p></article>
+        </div>
+      </section>
+
+      <section class="section section--muted" id="courses">
+        <div class="section__header"><p class="eyebrow">Course catalog</p><h2>Chọn lối học phù hợp</h2><p>Tìm theo lĩnh vực hoặc cấp độ. Mỗi chương trình kéo dài 8 tuần với 16 buổi học, kết hợp nền tảng, thực hành và dự án cuối khóa.</p></div>
+        <div class="education-toolbar">
+          <label class="education-search"><span class="sr-only">Tìm khóa học</span><input type="search" data-course-search placeholder="Tìm theo tên khóa học..." autocomplete="off"></label>
+          <div class="education-filters" data-course-filters aria-label="Lọc khóa học"></div>
+        </div>
+        <div class="course-grid" data-course-grid></div>
+        <div class="empty-state education-empty" data-course-empty hidden><div><h3>Chưa tìm thấy khóa học phù hợp</h3><p>Thử đổi từ khóa hoặc bỏ bớt bộ lọc.</p></div><button class="button button--secondary button--small" type="button" data-clear-filters>Xóa bộ lọc</button></div>
+      </section>
+
+      <section class="section section--tight" id="consulting"><div class="education-cta"><div><p class="eyebrow">For teams</p><h2>Cần chương trình đào tạo cho doanh nghiệp?</h2><p>Chia sẻ bối cảnh, nhóm người học và mục tiêu của bạn. Intelex sẽ cùng xác định hướng tư vấn phù hợp.</p></div><a class="button button--primary" href="../about/index.html#contact">Yêu cầu tư vấn</a></div></section>
+    </main>
+    <footer class="site-footer"><img class="site-footer__logo" src="../assets/icons/intelex-logo.png" alt="Intelex — Intelligent &amp; Excellent Finance"><p>Intelex · R&amp;D &amp; Innovation Hub · TP. Hồ Chí Minh, Việt Nam · intelex.support@gmail.com</p><a href="../about/index.html#contact">Liên hệ</a></footer>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/education-data.js"></script>
+    <script src="../assets/js/education.js"></script>
+  </body>
+</html>

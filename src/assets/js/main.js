@@ -15,6 +15,8 @@
     labs: "Labs",
     projects: "Dự án",
     community: "Cộng đồng",
+    education: "Giáo Dục",
+    "education-course": "Giáo Dục",
     about: "Về Intelex"
   };
 
